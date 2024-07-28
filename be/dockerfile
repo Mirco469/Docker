@@ -1,0 +1,14 @@
+FROM node:20
+
+WORKDIR /be
+
+COPY ./ ./
+
+# Run command during build phase (docker build -t be .)
+RUN npm install
+
+# Run command when executing image (docker run -ti -p 3000:3000 be)
+CMD ["npm", "start"]
+
+# EXPOSE is only for documentation purposes. Use -p in docker run command to really expose port
+EXPOSE 3000
