@@ -1,0 +1,10 @@
+# docker-compose up -d
+services:
+  few:
+    build: ./few
+    ports:
+      - "4200:4200"
+  be:
+    build: ./be
+    ports:
+      - "3000:3000"
