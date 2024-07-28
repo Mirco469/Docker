@@ -1,0 +1,17 @@
+FROM node:20
+
+WORKDIR /few
+
+COPY ./ ./
+
+# Run command during build phase (docker build -t few .)
+RUN npm install
+
+# Avoid angular asking for analytics permissions during npm start
+ENV NG_CLI_ANALYTICS="false"
+
+# Run command when executing image (docker run -ti -p 4200:4200 few)
+CMD ["npm", "run", "start:docker"]
+
+# EXPOSE is only for documentation purposes. Use -p in docker run command to really expose port
+EXPOSE 4200
